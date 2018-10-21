@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SGEC.Infrastructure.Data;
 
 namespace SGEC.Infrastructure.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    partial class EcommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20181021163206_ConfiguraProdutoCategoria")]
+    partial class ConfiguraProdutoCategoria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,25 +72,6 @@ namespace SGEC.Infrastructure.Migrations
                     b.ToTable("Cliente");
                 });
 
-            modelBuilder.Entity("EGEC.ApplicationCore.Entity.Perfil", b =>
-                {
-                    b.Property<int>("PerfilId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("PerfilId");
-
-                    b.ToTable("Perfil");
-                });
-
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.Produto", b =>
                 {
                     b.Property<int>("ProdutoId")
@@ -136,46 +119,11 @@ namespace SGEC.Infrastructure.Migrations
                     b.ToTable("Produto");
                 });
 
-            modelBuilder.Entity("EGEC.ApplicationCore.Entity.User", b =>
-                {
-                    b.Property<int>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Login")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.Property<int>("PerfilId");
-
-                    b.Property<string>("Senha")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)");
-
-                    b.HasKey("UserId");
-
-                    b.HasIndex("PerfilId");
-
-                    b.ToTable("User");
-                });
-
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.Categoria", b =>
                 {
                     b.HasOne("EGEC.ApplicationCore.Entity.Produto", "Produto")
                         .WithMany("Categoria")
                         .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("EGEC.ApplicationCore.Entity.User", b =>
-                {
-                    b.HasOne("EGEC.ApplicationCore.Entity.Perfil", "Perfil")
-                        .WithMany("Users")
-                        .HasForeignKey("PerfilId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
