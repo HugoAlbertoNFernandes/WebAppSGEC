@@ -17,13 +17,16 @@ namespace SGEC.Infrastructure.Data
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<ClienteEndereco> ClienteEnderecos { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cliente>().ToTable("Cliente");
+            modelBuilder.Entity<ClienteEndereco>().ToTable("ClienteEndereco");
             modelBuilder.Entity<Produto>().ToTable("Produto");
             modelBuilder.Entity<Categoria>().ToTable("Categoria");
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Perfil>().ToTable("Perfil");
+            
 
 
             #region Clientes
@@ -42,34 +45,36 @@ namespace SGEC.Infrastructure.Data
                 .HasColumnType("varchar(21)");
             #endregion
 
+            #region ClienteEndereco
+            modelBuilder.Entity<ClienteEndereco>().Property(e => e.Logradouro)
+                .HasColumnType("varchar(200)");
+            modelBuilder.Entity<ClienteEndereco>().Property(e => e.Bairro)
+                .HasColumnType("varchar(100)");
+            modelBuilder.Entity<ClienteEndereco>().Property(e => e.Cep)
+                .HasColumnType("varchar(20)");
+            modelBuilder.Entity<ClienteEndereco>().Property(e => e.Referencia)
+                .HasColumnType("varchar(400)");
+            #endregion
+
             #region Produto
             modelBuilder.Entity<Produto>().Property(e => e.Nome)
-                .HasColumnType("varchar(100)")
-                .IsRequired();
+                .HasColumnType("varchar(100)");
             modelBuilder.Entity<Produto>().Property(e => e.DescricaoCurta)
-                .HasColumnType("varchar(100)")
-                .IsRequired();
+                .HasColumnType("varchar(100)");
             modelBuilder.Entity<Produto>().Property(e => e.DescricaoLoga)
-                .HasColumnType("varchar(max)")
-                .IsRequired();
+                .HasColumnType("varchar(1000)");
             modelBuilder.Entity<Produto>().Property(e => e.ImgUrl)
-                .HasColumnType("varchar(400)")
-                .IsRequired();
+                .HasColumnType("varchar(400)");
             modelBuilder.Entity<Produto>().Property(e => e.ImgUrl1)
-                .HasColumnType("varchar(400)")
-                .IsRequired();
+                .HasColumnType("varchar(400)");
             modelBuilder.Entity<Produto>().Property(e => e.ImgUrl2)
-                .HasColumnType("varchar(400)")
-                .IsRequired();
+                .HasColumnType("varchar(400)");
             modelBuilder.Entity<Produto>().Property(e => e.ImgUrl3)
-                .HasColumnType("varchar(400)")
-                .IsRequired();
+                .HasColumnType("varchar(400)");
             modelBuilder.Entity<Produto>().Property(e => e.ImgUrl4)
-                .HasColumnType("varchar(400)")
-                .IsRequired();
+                .HasColumnType("varchar(400)");
             modelBuilder.Entity<Produto>().Property(e => e.ImgUrl5)
-                .HasColumnType("varchar(400)")
-                .IsRequired();
+                .HasColumnType("varchar(400)");
             #endregion
 
             #region Categoria
@@ -77,8 +82,7 @@ namespace SGEC.Infrastructure.Data
                 .HasColumnType("varchar(100)")
                 .IsRequired();
             modelBuilder.Entity<Categoria>().Property(e => e.UrlString)
-                .HasColumnType("varchar(400)")
-                .IsRequired();
+                .HasColumnType("varchar(400)");
             #endregion
 
             #region User
@@ -98,8 +102,7 @@ namespace SGEC.Infrastructure.Data
                 .HasColumnType("varchar(100)")
                 .IsRequired();
             modelBuilder.Entity<Perfil>().Property(e => e.Descricao)
-                .HasColumnType("varchar(100)")
-                .IsRequired();
+                .HasColumnType("varchar(300)");
             #endregion
             //base.OnModelCreating(modelBuilder);
         }

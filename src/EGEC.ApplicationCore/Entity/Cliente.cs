@@ -8,7 +8,7 @@ namespace EGEC.ApplicationCore.Entity
     {
         public Cliente()
         {
-                
+
         }
         public int ClienteId { get; set; }
         public string Nome { get; set; }
@@ -16,5 +16,6 @@ namespace EGEC.ApplicationCore.Entity
         public string Email { get; set; }
         public string telefone { get; set; }
         public string telefone1 { get; set; }
+        public ClienteEndereco ClienteEndereco { get; set; }
     }
 }
