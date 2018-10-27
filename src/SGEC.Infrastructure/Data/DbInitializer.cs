@@ -51,6 +51,13 @@ namespace SGEC.Infrastructure.Data
                 new Categoria{
                     Nome = "Play Station",
                     SubCategoriaId=2
+                },
+                new Categoria{
+                    Nome = "Livros"
+                },
+                new Categoria{
+                    Nome = ".Net Core 2",
+                    SubCategoriaId=2
                 }
             };
                 context.AddRange(categoria);
