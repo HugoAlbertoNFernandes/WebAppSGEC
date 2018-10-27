@@ -8,12 +8,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Domain", "2 - Domain", "{4ACABE00-CC26-487E-BABE-8658A1A8BADA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{252399DC-F963-4699-AD18-E47ECD4C88E1}"
+	ProjectSection(SolutionItems) = preProject
+		src\SGEC.Infrastructure\Migrations\script para migracao.txt = src\SGEC.Infrastructure\Migrations\script para migracao.txt
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGEC.ApplicationCore", "src\EGEC.ApplicationCore\EGEC.ApplicationCore.csproj", "{ECA93C18-FACD-4AAF-A96A-A2C295E678F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EGEC.ApplicationCore", "src\EGEC.ApplicationCore\EGEC.ApplicationCore.csproj", "{ECA93C18-FACD-4AAF-A96A-A2C295E678F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SGEC.Infrastructure", "src\SGEC.Infrastructure\SGEC.Infrastructure.csproj", "{D06E08AF-940F-431F-A43F-F6BCFECE7F6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SGEC.Infrastructure", "src\SGEC.Infrastructure\SGEC.Infrastructure.csproj", "{D06E08AF-940F-431F-A43F-F6BCFECE7F6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EGEC.UI.Web", "src\EGEC.UI.Web\EGEC.UI.Web.csproj", "{EE8EDD6C-9C34-418F-8E3B-CF55218AAFB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EGEC.UI.Web", "src\EGEC.UI.Web\EGEC.UI.Web.csproj", "{EE8EDD6C-9C34-418F-8E3B-CF55218AAFB7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

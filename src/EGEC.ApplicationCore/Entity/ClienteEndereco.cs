@@ -16,7 +16,7 @@ namespace EGEC.ApplicationCore.Entity
         public string Cep { get; set; }
         public string Referencia { get; set; }
         public int ClienteId { get; set; }
-        public ICollection<Cliente> Cliente { get; set; }
+        public Cliente Cliente { get; set; } //o endereço tem 1 unico cliente
 
     }
 }

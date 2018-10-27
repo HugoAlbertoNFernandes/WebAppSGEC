@@ -13,6 +13,6 @@ namespace EGEC.ApplicationCore.Entity
         public int PerfilId { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
-        public ICollection<User> Users { get; set; }
+        public ICollection<User> Users { get; set; } // o perfil tem um unico usuário
     }
 }

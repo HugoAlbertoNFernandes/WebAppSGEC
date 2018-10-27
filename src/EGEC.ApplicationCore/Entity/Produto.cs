@@ -22,6 +22,7 @@ namespace EGEC.ApplicationCore.Entity
         public string ImgUrl3 { get; set; }
         public string ImgUrl4 { get; set; }
         public string ImgUrl5 { get; set; }
-        public ICollection<Categoria> Categoria { get; set; }
+        public ICollection<ProdutoCategoria> ProdutoCategoria { get; set; }
+        
     }
 }

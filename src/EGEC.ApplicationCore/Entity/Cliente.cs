@@ -16,6 +16,6 @@ namespace EGEC.ApplicationCore.Entity
         public string Email { get; set; }
         public string telefone { get; set; }
         public string telefone1 { get; set; }
-        public ClienteEndereco ClienteEndereco { get; set; }
+        public ICollection<ClienteEndereco> ClienteEndereco { get; set; }//o cliente tem muitos endereços
     }
 }

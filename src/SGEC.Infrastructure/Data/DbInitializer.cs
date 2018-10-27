@@ -8,20 +8,21 @@ namespace SGEC.Infrastructure.Data
 {
     public static class DbInitializer
     {
-        public static void Inicializer(EcommerceContext context) {
-            if (context.Users.Any()) {
-                return;
-            }
-
-            var perfil = new Perfil[] {
+        public static void Inicializer(EcommerceContext context)
+        {
+            if (context.Users.Any())
+            { }
+            else
+            {
+                var perfil = new Perfil[] {
                 new Perfil{
                     Nome = "Administrador",
                     Descricao = "Administrador do Sistema"
                 }
             };
-            context.AddRange(perfil);
+                context.AddRange(perfil);
 
-            var users = new User[] {
+                var users = new User[] {
                 new User{
                     Nome = "Administrador",
                     Login = "Adminsitrador",
@@ -29,7 +30,31 @@ namespace SGEC.Infrastructure.Data
                     Perfil = perfil[0]
                 }
             };
-            context.AddRange(users);
+                context.AddRange(users);
+            }
+            if (context.Categorias.Any())
+            { }
+            else
+            {
+                var categoria = new Categoria[] {
+                new Categoria{
+                    Nome = "Eletrônicos",
+                },
+                new Categoria{
+                    Nome = "Jogos",
+                    SubCategoriaId=1
+                },
+                new Categoria{
+                    Nome = "XBOX",
+                    SubCategoriaId=2
+                },
+                new Categoria{
+                    Nome = "Play Station",
+                    SubCategoriaId=2
+                }
+            };
+                context.AddRange(categoria);
+            }
 
             context.SaveChanges();
         }

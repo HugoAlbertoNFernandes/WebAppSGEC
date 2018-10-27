@@ -26,10 +26,20 @@ namespace SGEC.Infrastructure.Data
             modelBuilder.Entity<Categoria>().ToTable("Categoria");
             modelBuilder.Entity<User>().ToTable("User");
             modelBuilder.Entity<Perfil>().ToTable("Perfil");
-            
+            modelBuilder.Entity<ProdutoCategoria>().ToTable("ProdutoCategoria");
+
 
 
             #region Clientes
+            modelBuilder.Entity<Cliente>()
+                .HasKey(e => e.ClienteId);
+
+            modelBuilder.Entity<Cliente>()
+                .HasMany(e => e.ClienteEndereco)
+                .WithOne(e => e.Cliente)
+                .HasForeignKey(e => e.ClienteId)
+                .HasPrincipalKey(e => e.ClienteId);
+
             modelBuilder.Entity<Cliente>().Property(e => e.CPF)
                 .HasColumnType("varchar(11)")
                 .IsRequired();
@@ -46,6 +56,15 @@ namespace SGEC.Infrastructure.Data
             #endregion
 
             #region ClienteEndereco
+            modelBuilder.Entity<ClienteEndereco>()
+                .HasKey(e => e.ClienteEnderecoid);
+
+            modelBuilder.Entity<ClienteEndereco>()
+                .HasOne(c => c.Cliente)
+                .WithMany(c => c.ClienteEndereco)
+                .HasForeignKey(c => c.ClienteId)
+                .HasPrincipalKey(c => c.ClienteId);
+
             modelBuilder.Entity<ClienteEndereco>().Property(e => e.Logradouro)
                 .HasColumnType("varchar(200)");
             modelBuilder.Entity<ClienteEndereco>().Property(e => e.Bairro)
@@ -57,6 +76,9 @@ namespace SGEC.Infrastructure.Data
             #endregion
 
             #region Produto
+            modelBuilder.Entity<Produto>()
+                .HasKey(e => e.ProdutoId);
+
             modelBuilder.Entity<Produto>().Property(e => e.Nome)
                 .HasColumnType("varchar(100)");
             modelBuilder.Entity<Produto>().Property(e => e.DescricaoCurta)
@@ -77,15 +99,49 @@ namespace SGEC.Infrastructure.Data
                 .HasColumnType("varchar(400)");
             #endregion
 
+            #region ProdutoCategoria
+            modelBuilder.Entity<ProdutoCategoria>()
+                .HasKey(pc => pc.id);
+
+            modelBuilder.Entity<ProdutoCategoria>()
+                .HasOne(c => c.Categorias)
+                .WithMany(c => c.ProdutoCategorias)
+                .HasForeignKey(c => c.CategoriaId);
+
+            modelBuilder.Entity<ProdutoCategoria>()
+                .HasOne(c => c.Produtos)
+                .WithMany(c => c.ProdutoCategoria)
+                .HasForeignKey(c => c.ProdutoId);
+            #endregion
+
             #region Categoria
+            modelBuilder.Entity<Categoria>()
+                .HasKey(c => c.CategoriaId);
+
+            modelBuilder.Entity<Categoria>()
+                .HasMany(s => s.SubCategoria)
+                .WithOne()
+                .HasForeignKey(s => s.SubCategoriaId)
+                .HasPrincipalKey(c => c.CategoriaId);
+
             modelBuilder.Entity<Categoria>().Property(e => e.Nome)
                 .HasColumnType("varchar(100)")
                 .IsRequired();
+
             modelBuilder.Entity<Categoria>().Property(e => e.UrlString)
                 .HasColumnType("varchar(400)");
             #endregion
 
             #region User
+            modelBuilder.Entity<User>()
+                .HasKey(u => u.UserId);
+
+            modelBuilder.Entity<User>()
+                .HasOne(p => p.Perfil)
+                .WithMany(c => c.Users)
+                .HasForeignKey(u => u.PerfilId)
+                .HasPrincipalKey(u => u.PerfilId);
+
             modelBuilder.Entity<User>().Property(e => e.Nome)
                 .HasColumnType("varchar(100)")
                 .IsRequired();
@@ -98,12 +154,37 @@ namespace SGEC.Infrastructure.Data
             #endregion
 
             #region Perfil
+            modelBuilder.Entity<Perfil>().HasKey(p => p.PerfilId);
+
+            modelBuilder.Entity<Perfil>()
+                .HasMany(u => u.Users)
+                .WithOne(p => p.Perfil)
+                .HasForeignKey(u => u.PerfilId)
+                .HasPrincipalKey(u => u.PerfilId);
+
             modelBuilder.Entity<Perfil>().Property(e => e.Nome)
                 .HasColumnType("varchar(100)")
                 .IsRequired();
             modelBuilder.Entity<Perfil>().Property(e => e.Descricao)
                 .HasColumnType("varchar(300)");
             #endregion
+
+            #region Menu
+            modelBuilder.Entity<Menu>()
+               .HasKey(m => m.id);
+
+            modelBuilder.Entity<Menu>()
+                .HasMany(m => m.SubMenu)
+                .WithOne()
+                .HasForeignKey(m => m.MenuId)
+                .HasPrincipalKey(m=>m.id);
+
+            modelBuilder.Entity<Menu>().Property(m => m.Titulo)
+                .HasColumnType("varchar(100)");
+            modelBuilder.Entity<Menu>().Property(m => m.Link)
+                .HasColumnType("varchar(400)");
+            #endregion
+
             //base.OnModelCreating(modelBuilder);
         }
     }

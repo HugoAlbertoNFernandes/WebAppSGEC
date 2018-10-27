@@ -15,6 +15,6 @@ namespace EGEC.ApplicationCore.Entity
         public string Login { get; set; }
         public string Senha { get; set; }
         public int PerfilId { get; set; }
-        public Perfil Perfil { get; set; }
+        public Perfil Perfil { get; set; } //o usuário tem um unico perfil
     }
 }

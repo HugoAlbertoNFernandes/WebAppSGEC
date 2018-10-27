@@ -10,8 +10,8 @@ using SGEC.Infrastructure.Data;
 namespace SGEC.Infrastructure.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20181024041518_inicial")]
-    partial class inicial
+    [Migration("20181027005127_inical")]
+    partial class inical
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,20 +27,18 @@ namespace SGEC.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoriaMasterId");
-
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
-                    b.Property<int>("ProdutoId");
+                    b.Property<int?>("SubCategoriaId");
 
                     b.Property<string>("UrlString")
                         .HasColumnType("varchar(400)");
 
                     b.HasKey("CategoriaId");
 
-                    b.HasIndex("ProdutoId");
+                    b.HasIndex("SubCategoriaId");
 
                     b.ToTable("Categoria");
                 });
@@ -54,8 +52,6 @@ namespace SGEC.Infrastructure.Migrations
                     b.Property<string>("CPF")
                         .IsRequired()
                         .HasColumnType("varchar(11)");
-
-                    b.Property<int?>("ClienteEnderecoid");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -72,8 +68,6 @@ namespace SGEC.Infrastructure.Migrations
                         .HasColumnType("varchar(21)");
 
                     b.HasKey("ClienteId");
-
-                    b.HasIndex("ClienteEnderecoid");
 
                     b.ToTable("Cliente");
                 });
@@ -100,7 +94,30 @@ namespace SGEC.Infrastructure.Migrations
 
                     b.HasKey("ClienteEnderecoid");
 
+                    b.HasIndex("ClienteId");
+
                     b.ToTable("ClienteEndereco");
+                });
+
+            modelBuilder.Entity("EGEC.ApplicationCore.Entity.Menu", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Link")
+                        .HasColumnType("varchar(400)");
+
+                    b.Property<int?>("MenuId");
+
+                    b.Property<string>("Titulo")
+                        .HasColumnType("varchar(100)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("MenuId");
+
+                    b.ToTable("Menu");
                 });
 
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.Perfil", b =>
@@ -159,6 +176,25 @@ namespace SGEC.Infrastructure.Migrations
                     b.ToTable("Produto");
                 });
 
+            modelBuilder.Entity("EGEC.ApplicationCore.Entity.ProdutoCategoria", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoriaId");
+
+                    b.Property<int>("ProdutoId");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("CategoriaId");
+
+                    b.HasIndex("ProdutoId");
+
+                    b.ToTable("ProdutoCategoria");
+                });
+
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.User", b =>
                 {
                     b.Property<int>("UserId")
@@ -188,17 +224,37 @@ namespace SGEC.Infrastructure.Migrations
 
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.Categoria", b =>
                 {
-                    b.HasOne("EGEC.ApplicationCore.Entity.Produto", "Produto")
-                        .WithMany("Categoria")
-                        .HasForeignKey("ProdutoId")
+                    b.HasOne("EGEC.ApplicationCore.Entity.Categoria")
+                        .WithMany("SubCategoria")
+                        .HasForeignKey("SubCategoriaId");
+                });
+
+            modelBuilder.Entity("EGEC.ApplicationCore.Entity.ClienteEndereco", b =>
+                {
+                    b.HasOne("EGEC.ApplicationCore.Entity.Cliente", "Cliente")
+                        .WithMany("ClienteEndereco")
+                        .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("EGEC.ApplicationCore.Entity.Cliente", b =>
+            modelBuilder.Entity("EGEC.ApplicationCore.Entity.Menu", b =>
                 {
-                    b.HasOne("EGEC.ApplicationCore.Entity.ClienteEndereco", "ClienteEndereco")
-                        .WithMany("Cliente")
-                        .HasForeignKey("ClienteEnderecoid");
+                    b.HasOne("EGEC.ApplicationCore.Entity.Menu")
+                        .WithMany("SubMenu")
+                        .HasForeignKey("MenuId");
+                });
+
+            modelBuilder.Entity("EGEC.ApplicationCore.Entity.ProdutoCategoria", b =>
+                {
+                    b.HasOne("EGEC.ApplicationCore.Entity.Categoria", "Categorias")
+                        .WithMany("ProdutoCategorias")
+                        .HasForeignKey("CategoriaId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("EGEC.ApplicationCore.Entity.Produto", "Produtos")
+                        .WithMany("ProdutoCategoria")
+                        .HasForeignKey("ProdutoId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.User", b =>
