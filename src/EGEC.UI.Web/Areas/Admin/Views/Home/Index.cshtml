@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Admin</h2>
+
+<ul class="nav navbar-nav">
+    <li>
+        <a asp-area="Admin" asp-controller="Home" asp-action="About">
+            About in Admin
+        </a>
+    </li>
+
+    <li>
+        <a asp-area="User" asp-controller="Home" asp-action="About">
+            About in User
+        </a>
+    </li>
+</ul>
+    @*<a asp-controller="Home" asp-action="About" asp-area="Admin"> About in Admin </a><br />
+        <a asp-controller="Home" asp-action="About" asp-area="User"> About in User </a>*@
