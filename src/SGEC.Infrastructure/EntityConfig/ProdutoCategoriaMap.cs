@@ -16,12 +16,14 @@ namespace SGEC.Infrastructure.EntityConfig
             builder
                 .HasOne(c => c.Categorias)
                 .WithMany(c => c.ProdutoCategorias)
-                .HasForeignKey(c => c.CategoriaId);
+                .HasForeignKey(c => c.CategoriaId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder
                 .HasOne(c => c.Produtos)
                 .WithMany(c => c.ProdutoCategoria)
-                .HasForeignKey(c => c.ProdutoId);
+                .HasForeignKey(c => c.ProdutoId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

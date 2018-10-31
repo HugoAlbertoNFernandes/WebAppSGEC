@@ -17,7 +17,8 @@ namespace SGEC.Infrastructure.EntityConfig
                 .HasMany(m => m.SubMenu)
                 .WithOne()
                 .HasForeignKey(m => m.MenuId)
-                .HasPrincipalKey(m => m.id);
+                .HasPrincipalKey(m => m.id)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(m => m.Titulo)
                 .HasColumnType("varchar(100)");

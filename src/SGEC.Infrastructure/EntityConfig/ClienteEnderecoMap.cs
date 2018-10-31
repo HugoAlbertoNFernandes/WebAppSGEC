@@ -17,7 +17,8 @@ namespace SGEC.Infrastructure.EntityConfig
                 .HasOne(c => c.Cliente)
                 .WithMany(c => c.ClienteEndereco)
                 .HasForeignKey(c => c.ClienteId)
-                .HasPrincipalKey(c => c.ClienteId);
+                .HasPrincipalKey(c => c.ClienteId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(e => e.Logradouro)
                 .HasColumnType("varchar(200)");

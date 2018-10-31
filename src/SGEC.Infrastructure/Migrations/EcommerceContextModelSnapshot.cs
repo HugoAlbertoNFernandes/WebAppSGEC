@@ -224,7 +224,8 @@ namespace SGEC.Infrastructure.Migrations
                 {
                     b.HasOne("EGEC.ApplicationCore.Entity.Categoria")
                         .WithMany("SubCategoria")
-                        .HasForeignKey("SubCategoriaId");
+                        .HasForeignKey("SubCategoriaId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.ClienteEndereco", b =>
@@ -232,14 +233,15 @@ namespace SGEC.Infrastructure.Migrations
                     b.HasOne("EGEC.ApplicationCore.Entity.Cliente", "Cliente")
                         .WithMany("ClienteEndereco")
                         .HasForeignKey("ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.Menu", b =>
                 {
                     b.HasOne("EGEC.ApplicationCore.Entity.Menu")
                         .WithMany("SubMenu")
-                        .HasForeignKey("MenuId");
+                        .HasForeignKey("MenuId")
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.ProdutoCategoria", b =>
@@ -247,12 +249,12 @@ namespace SGEC.Infrastructure.Migrations
                     b.HasOne("EGEC.ApplicationCore.Entity.Categoria", "Categorias")
                         .WithMany("ProdutoCategorias")
                         .HasForeignKey("CategoriaId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("EGEC.ApplicationCore.Entity.Produto", "Produtos")
                         .WithMany("ProdutoCategoria")
                         .HasForeignKey("ProdutoId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("EGEC.ApplicationCore.Entity.User", b =>
@@ -260,7 +262,7 @@ namespace SGEC.Infrastructure.Migrations
                     b.HasOne("EGEC.ApplicationCore.Entity.Perfil", "Perfil")
                         .WithMany("Users")
                         .HasForeignKey("PerfilId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 #pragma warning restore 612, 618
         }

@@ -17,7 +17,8 @@ namespace SGEC.Infrastructure.EntityConfig
                 .HasMany(u => u.Users)
                 .WithOne(p => p.Perfil)
                 .HasForeignKey(u => u.PerfilId)
-                .HasPrincipalKey(u => u.PerfilId);
+                .HasPrincipalKey(u => u.PerfilId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(e => e.Nome)
                 .HasColumnType("varchar(100)")

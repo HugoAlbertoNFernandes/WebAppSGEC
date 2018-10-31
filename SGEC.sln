@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infrastructure", "3 - Infrastructure", "{252399DC-F963-4699-AD18-E47ECD4C88E1}"
 	ProjectSection(SolutionItems) = preProject
 		src\SGEC.Infrastructure\Migrations\script para migracao.txt = src\SGEC.Infrastructure\Migrations\script para migracao.txt
+		Script to Migration.txt = Script to Migration.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EGEC.ApplicationCore", "src\EGEC.ApplicationCore\EGEC.ApplicationCore.csproj", "{ECA93C18-FACD-4AAF-A96A-A2C295E678F5}"

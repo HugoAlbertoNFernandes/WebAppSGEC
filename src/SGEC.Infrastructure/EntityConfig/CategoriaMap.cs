@@ -17,7 +17,8 @@ namespace SGEC.Infrastructure.EntityConfig
                 .HasMany(s => s.SubCategoria)
                 .WithOne()
                 .HasForeignKey(s => s.SubCategoriaId)
-                .HasPrincipalKey(c => c.CategoriaId);
+                .HasPrincipalKey(c => c.CategoriaId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.Property(e => e.Nome)
                 .HasColumnType("varchar(100)")

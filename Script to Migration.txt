@@ -1,0 +1,2 @@
+Add-Migration -Context EcommerceContext Inicio
+update-database -Context EcommerceContext
