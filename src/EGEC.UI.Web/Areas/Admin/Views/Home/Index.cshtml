@@ -1,22 +1,43 @@
 ﻿
 @{
     ViewData["Title"] = "Index";
+    Layout = null;
 }
 
-<h2>Admin</h2>
-
-<ul class="nav navbar-nav">
-    <li>
-        <a asp-area="Admin" asp-controller="Home" asp-action="About">
-            About in Admin
-        </a>
-    </li>
-
-    <li>
-        <a asp-area="User" asp-controller="Home" asp-action="About">
-            About in User
-        </a>
-    </li>
-</ul>
-    @*<a asp-controller="Home" asp-action="About" asp-area="Admin"> About in Admin </a><br />
-        <a asp-controller="Home" asp-action="About" asp-area="User"> About in User </a>*@
+<div class="header-w3l">
+    <h1>Shine Login Form</h1>
+</div>
+<div class="main-content-agile">
+    <div class="sub-main-w3">
+        <h2>Login Here</h2>
+        <form action="#" method="post">
+            <div class="pom-agile">
+                <span class="fa fa-user" aria-hidden="true"></span>
+                <input placeholder="E-mail" name="Name" class="user" type="email" required="">
+            </div>
+            <div class="pom-agile">
+                <span class="fa fa-key" aria-hidden="true"></span>
+                <input placeholder="Password" name="Password" class="pass" type="password" required="">
+            </div>
+            <div class="sub-w3l">
+                <div class="sub-agile">
+                    <input type="checkbox" id="brand1" value="">
+                    <label for="brand1">
+                        <span></span>Remember me
+                    </label>
+                </div>
+                <a href="#">Forgot Password?</a>
+                <div class="clear"></div>
+            </div>
+            <div class="right-w3l">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    <p>
+        &copy; 2018 Shine Login Form. All rights reserved | Design by
+        <a href="http://w3layouts.com">W3layouts</a>
+    </p>
+</div>
