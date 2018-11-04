@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <td rowspan="3">
+                @*Categoria*@
+                @await Component.InvokeAsync("Categoria")
+            </td>
+            <td>Topo</td>
+        </tr>
+        <tr>
+            <td>
+                <div class="container body-content">
+                    @RenderBody()
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="footer">
+                    <p>
+                        &copy; 2018 All rights reserved | Design by Hugo Fernandes
+                    </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

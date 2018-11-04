@@ -13,7 +13,7 @@ namespace EGEC.ApplicationCore.Services
         private readonly IUserRepository _UserRepository;
         public UserService(IUserRepository UserRepository)
         {
-            _UserRepository = UserRepository;
+            this._UserRepository = UserRepository;
         }
 
         public User Adicionar(User entity)

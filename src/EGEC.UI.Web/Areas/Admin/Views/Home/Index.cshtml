@@ -1,4 +1,4 @@
-﻿
+﻿@model EGEC.ApplicationCore.Entity.User
 @{
     ViewData["Title"] = "Index";
     Layout = null;
@@ -13,14 +13,17 @@
     <div class="main-content-agile">
         <div class="sub-main-w3">
             <h2>Login Administrativo</h2>
-            <form action="#" method="post">
+            <form action="~/Admin/Home" method="post">
                 <div class="pom-agile">
                     <span class="fa fa-user" aria-hidden="true"></span>
-                    <input placeholder="E-mail" name="Name" class="user" type="email" required="">
+                    @Html.TextBoxFor(m => m.Login, new { @class = "user", autocomplete = "off" })
+                    @*<input placeholder="Login" name="Name" class="user" id="Login" type="email" required="">*@
+                    @*<input placeholder="Login" name="Name" class="user" id="Login" required="">*@
                 </div>
                 <div class="pom-agile">
                     <span class="fa fa-key" aria-hidden="true"></span>
-                    <input placeholder="Password" name="Password" class="pass" type="password" required="">
+                    @Html.TextBoxFor(m => m.Senha, new { @class= "pass", autocomplete="off"})
+                    @*<input placeholder="Password" name="Password" class="pass" id="Senha" type="password" required="">*@
                 </div>
                 @*<div class="sub-w3l">
                     <div class="sub-agile">
