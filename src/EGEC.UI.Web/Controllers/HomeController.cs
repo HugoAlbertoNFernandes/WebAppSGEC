@@ -5,11 +5,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EGEC.UI.Web.Models;
+using EGEC.ApplicationCore.Interfaces.Services;
 
 namespace EGEC.UI.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUserService _user;
+        public HomeController(IUserService user)
+        {
+            this._user = user;
+        }
         public IActionResult Index()
         {
             return View();

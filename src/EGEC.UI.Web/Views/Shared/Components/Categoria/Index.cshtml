@@ -1,8 +1,21 @@
-﻿
+﻿@page
+@model EGEC.ApplicationCore.Entity.Categoria
 @*@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-}*@
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }*@
 
-<h2>Index</h2>
-
+@*<h2>Index</h2>*@
+<table class="table">
+    <thead>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayTextFor(item.)</td>
+                </tr>
+            }
+        }
+    </thead>
+</table>

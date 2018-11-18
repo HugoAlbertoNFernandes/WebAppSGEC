@@ -11,9 +11,17 @@ namespace EGEC.ApplicationCore.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _UserRepository;
+              
         public UserService(IUserRepository UserRepository)
         {
             this._UserRepository = UserRepository;
+        }
+
+        public IEnumerable<User> Logar(string vuser, string vsenha)
+        {
+            var v = _UserRepository.Buscar(x => x.Nome.Contains(vuser) &&
+             x.Senha.Contains(vsenha));
+            return v;
         }
 
         public User Adicionar(User entity)

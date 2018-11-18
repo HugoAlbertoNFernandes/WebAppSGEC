@@ -8,6 +8,7 @@ namespace EGEC.ApplicationCore.Interfaces.Services
 {
     public interface IUserService
     {
+        IEnumerable<User> Logar(string vuser, string vsenha);
         User Adicionar(User entity);
         void Atualizar(User entity);
         IEnumerable<User> ObterTodos();

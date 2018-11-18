@@ -1,6 +1,6 @@
 ﻿@model EGEC.ApplicationCore.Entity.User
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Login Administrativo";
     Layout = null;
 }
 
@@ -16,7 +16,7 @@
             <form action="~/Admin/Home" method="post">
                 <div class="pom-agile">
                     <span class="fa fa-user" aria-hidden="true"></span>
-                    @Html.TextBoxFor(m => m.Login, new { @class = "user", autocomplete = "off" })
+                    @Html.TextBoxFor(m => Model.Login, new { @class = "user", autocomplete = "off" })
                     @*<input placeholder="Login" name="Name" class="user" id="Login" type="email" required="">*@
                     @*<input placeholder="Login" name="Name" class="user" id="Login" required="">*@
                 </div>

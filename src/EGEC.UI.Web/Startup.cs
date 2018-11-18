@@ -12,6 +12,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SGEC.Infrastructure.Data;
 using EGEC.UI.Web.Data;
+using EGEC.ApplicationCore.Interfaces.Services;
+using EGEC.ApplicationCore.Interfaces.Repository;
+using EGEC.ApplicationCore.Services;
+using SGEC.Infrastructure.Repository;
 
 namespace EGEC.UI.Web
 {
@@ -42,6 +46,15 @@ namespace EGEC.UI.Web
             services.AddDbContext<EcommerceContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<ICategoriaRepository, CategoriaRepository>();
+
+            services.AddScoped<IMenuService, MenuService>();
+            services.AddScoped<IMenuRepository, MenuRepository>();
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -71,9 +84,9 @@ namespace EGEC.UI.Web
                     name: "Admin",
                     template: "{area=Admin}/{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

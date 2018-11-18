@@ -7,6 +7,6 @@ namespace EGEC.ApplicationCore.Interfaces.Repository
 {
     public interface IUserRepository : IRepository<User>
     {
-
+        IEnumerable<User> Logar(string vuser, string vsenha);
     }
 }

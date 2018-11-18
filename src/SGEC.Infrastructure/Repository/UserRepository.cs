@@ -13,5 +13,11 @@ namespace SGEC.Infrastructure.Repository
         {
 
         }
+
+        public IEnumerable<User> Logar(string vuser, string vsenha)
+        {
+            return Buscar(x => x.Nome.Contains(vuser) &&
+             x.Senha.Contains(vuser));
+        }
     }
 }
