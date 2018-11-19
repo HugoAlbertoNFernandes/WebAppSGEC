@@ -28,13 +28,12 @@ namespace EGEC.UI.Web.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Index(EGEC.ApplicationCore.Entity.User users)
         {
-            var vuser= _user.Logar(users.Login, users.Senha).FirstOrDefault();
+            var vuser = _user.Logar(users.Login, users.Senha).FirstOrDefault();
             if (vuser != null)
             {
                 return View("First");
             }
             else { return View(); }
-            
         }
 
 

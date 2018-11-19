@@ -16,13 +16,14 @@ namespace EGEC.UI.Web.Views.Shared.Components.Categoria
         }
         public async Task<IViewComponentResult> InvokeAsync() {
             var vcateg = db.ObterTodos();
-            return View("Index",vcateg);
+            var vcateg1 = db.CriarMenu();
+            return View(vcateg1);
             //return View("Index");
         }
-        private Task<IEnumerable<ICategoriaService>> GetItemsAsync()
-        {
-            var vcateg = db.ObterTodos();
-            return vcateg;
-        }
+        //private Task<IEnumerable<IMenuService>> GetItemsAsync()
+        //{
+        //    var vcateg = db.ObterTodos();
+        //    return vcateg;
+        //}
     }
 }

@@ -14,5 +14,6 @@ namespace EGEC.ApplicationCore.Interfaces.Services
         Menu ObterPorId(int id);
         IEnumerable<Menu> Buscar(Expression<Func<Menu, bool>> predicado);
         void Remover(Menu entity);
+        IList<Menu> CriarMenu();
     }
 }

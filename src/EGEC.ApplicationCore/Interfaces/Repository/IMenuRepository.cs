@@ -7,6 +7,7 @@ namespace EGEC.ApplicationCore.Interfaces.Repository
 {
     public interface IMenuRepository : IRepository<Menu>
     {
-
+        IList<Menu> CriarMenu();
+        
     }
 }

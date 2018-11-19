@@ -1,0 +1,36 @@
+﻿@using  EGEC.UI.Web.Views.Shared.Components.Categoria
+@*@page*@
+
+@model IList<EGEC.ApplicationCore.Entity.Menu>
+@*@{
+        ViewData["Title"] = "Index";
+        Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    }*@
+
+@*<h2>Index</h2>*@
+
+@if (Model != null)
+{
+    @foreach (var item in Model)
+    {
+
+        <li class="treeview">
+            <a href="#">
+                <span>@item.Titulo</span>
+            </a>
+        </li>
+        @if (item.SubMenu != null)
+        {
+            <i class="fa fa-angle-left pull-right"></i>
+            <ul class="treeview-menu">
+                @foreach (var Subitem in item.SubMenu)
+                {
+                    <li><a href="#"><i class="fa fa-angle-right"></i>@item.Titulo</a></li>
+                }
+            </ul>
+        }
+
+
+    }
+}
+

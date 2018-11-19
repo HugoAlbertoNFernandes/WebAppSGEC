@@ -10,7 +10,7 @@ using SGEC.Infrastructure.Data;
 namespace SGEC.Infrastructure.Migrations
 {
     [DbContext(typeof(EcommerceContext))]
-    [Migration("20181101022621_Inicio")]
+    [Migration("20181118212528_Inicio")]
     partial class Inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
